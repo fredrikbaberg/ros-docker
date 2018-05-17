@@ -6,15 +6,21 @@ RUN mkdir -p ~/ros/ws/src && cd ~/ros/ws/src && \
     mkdir -p ~/.gazebo && \
     hg clone https://bitbucket.org/osrf/gazebo_models ~/.gazebo/models && \
     rm -rf ~/.gazebo/models/.hg
-# Install necessary package for following tasks.
-# RUN apt-get update && apt-get install -y wget && rm -rf /var/lib/apt/lists/*
-# Setup sources
-# RUN echo "deb http://packages.osrfoundation.org/gazebo/ubuntu trusty main" > /etc/apt/sources.list.d/gazebo-latest.list && wget http://packages.osrfoundation.org/gazebo.key -O - | apt-key add -
-# Install all software in one step. && apt-get upgrade -y && apt-get install -y wget
-# xvfb
-RUN apt-get update && apt-get install -y python-catkin-tools build-essential ros-indigo-gazebo-ros-control ros-indigo-joint-state-controller ros-indigo-joint-trajectory-controller ros-indigo-ros-control ros-indigo-ros-controllers ros-indigo-gazebo-plugins && \
-cd ~/ros/ws && rosdep install --from-path src --ignore-src -ry && \
-rm -rf /var/lib/apt/lists/*
+# Could remove some files in ~/.gazebo/models to save space.
+RUN apt-get update && \
+    cd ~/ros/ws && rosdep install --from-path src --ignore-src -ry && \
+    apt-get install -y \
+    python-catkin-tools \
+    build-essential \
+    ros-indigo-xacro \
+    ros-indigo-gazebo-ros-control \
+    ros-indigo-effort-controllers \
+    ros-indigo-joint-state-controller \
+    ros-indigo-joint-trajectory-controller \
+    ros-indigo-ros-control \
+    ros-indigo-ros-controllers \
+    ros-indigo-gazebo-plugins && \
+    rm -rf /var/lib/apt/lists/*
 ARG MASTER_URI
 ENV MASTER_URI=$MASTER_URI
 COPY youbot_sim.sh .
