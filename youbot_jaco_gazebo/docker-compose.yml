@@ -1,0 +1,11 @@
+version: '3'
+services:
+  youbot_sim:
+    tty: true
+    build: .
+    container_name: youbot_jaco_sim
+    image: youbot_jaco_sim
+    network_mode: host
+    # environment:
+    #   - MASTER_URI='http://localhost:11311'
+    entrypoint: /bin/bash
