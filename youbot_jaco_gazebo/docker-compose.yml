@@ -4,8 +4,7 @@ services:
     tty: true
     build: .
     container_name: youbot_jaco_sim
-    image: youbot_jaco_sim
+    image: youbot-jaco-gazebo
     network_mode: host
-    # environment:
-    #   - MASTER_URI='http://localhost:11311'
-    entrypoint: /bin/bash
+    environment:
+      - MASTER_URI='http://localhost:11311'

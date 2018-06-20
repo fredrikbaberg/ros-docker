@@ -25,4 +25,5 @@ ARG MASTER_URI
 ENV MASTER_URI=$MASTER_URI
 COPY youbot_sim.sh .
 RUN chmod +x youbot_sim.sh
+RUN . /opt/ros/indigo/setup.sh && cd /root/ros/ws && catkin build
 ENTRYPOINT ["./youbot_sim.sh"]

@@ -5,7 +5,7 @@ if [ ! -z "${MASTER_URI}" ]; then
     export ROS_MASTER_URI=$MASTER_URI
 fi
 cd ~/ros/ws/
-source /opt/ros/indigo/setup.bash
+# source /opt/ros/indigo/setup.bash
 source /root/ros/ws/devel/setup.bash
 catkin build
 source devel/setup.bash
