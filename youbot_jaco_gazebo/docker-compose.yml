@@ -6,5 +6,5 @@ services:
     container_name: youbot_jaco_sim
     image: youbot-jaco-gazebo
     network_mode: host
-    environment:
-      - MASTER_URI='http://localhost:11311'
+    # environment:
+    #   - MASTER_URI='http://localhost:11311'

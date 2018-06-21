@@ -6,5 +6,5 @@ services:
     container_name: youbot_sim
     image: youbot-gazebo
     network_mode: host
-    environment:
-      - MASTER_URI='http://localhost:11311'
+    # environment:
+    #   - MASTER_URI='http://localhost:11311'

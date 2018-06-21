@@ -40,28 +40,20 @@
 
   <!-- youbot related -->
   <group>
-    <!-- Youbot parameters for joint state controller -->
-    <!-- <include file="$(find youbot_gazebo_control)/launch/joint_state_controller.launch" /> -->
     <rosparam file="$(find youbot_gazebo_control)/config/joint_state_controller.yaml" command="load"/> 
     <node pkg="controller_manager" type="spawner" name="joint_state_controller_spawner" args="joint_state_controller" respawn="false" output="screen" />
-
-    <!-- launch base controller (youbot) -->
-    <!-- <include file="$(find youbot_gazebo_control)/launch/base_controller.launch" /> -->
-    <!-- upload base controller parameters -->
     <rosparam file="$(find youbot_gazebo_control)/config/base_controller.yaml" command="load" />  
     <node pkg="controller_manager" type="spawner" name="base_controller_spawner" args="base_controller" respawn="false" output="screen" />
   </group>
 
   <!-- Kinova Jaco related -->
   <group>
-    <!-- launch Kinova arm controller -->
     <rosparam file="$(find kinova_control)/config/$(arg kinova_robotName)_control.yaml" command="load"/>
-    <!-- Effort Joint trajectory controller-->
-    <node name="$(arg kinova_robotName)_trajectory_controller" pkg="controller_manager" type="spawner"  output="screen" ns="$(arg kinova_robotName)"  args="effort_joint_trajectory_controller effort_finger_trajectory_controller joint_state_controller"/>
-    <node name="robot_state_publisher_jaco" pkg="robot_state_publisher" type="robot_state_publisher" respawn="false" output="screen"> 
+    <node pkg="controller_manager" type="spawner" name="$(arg kinova_robotName)_trajectory_controller" output="screen" args="$(arg kinova_robotName)/effort_joint_trajectory_controller $(arg kinova_robotName)/effort_finger_trajectory_controller"/>
+    <!-- <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher_jaco" respawn="false" output="screen"> 
       <remap from="/joint_states" to="/$(arg kinova_robotName)/joint_states"/>
-    </node>
-    <node name="command_robot_home_pose" pkg="kinova_control" type="move_robot.py" respawn="false" output="screen" args="$(arg kinova_robotType)"/>
+    </node> -->
+    <node pkg="kinova_control" type="move_robot.py" name="command_robot_home_pose" respawn="false" output="screen" args="$(arg kinova_robotType)"/>
   </group>
 
   <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
