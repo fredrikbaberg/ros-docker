@@ -7,7 +7,7 @@ RUN mkdir -p ~/ros/ws/src && cd ~/ros/ws/src && \
     mkdir -p ~/.gazebo && \
     hg clone https://bitbucket.org/osrf/gazebo_models ~/.gazebo/models && \
     rm -rf ~/.gazebo/models/.hg
-# # Could remove some files in ~/.gazebo/models to save space.
+# Could remove some files in ~/.gazebo/models to save space.
 RUN apt-get update && \
     cd ~/ros/ws && rosdep install --from-path src --ignore-src -ry && \
     apt-get install -y \
@@ -24,8 +24,8 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 ARG MASTER_URI
 ENV MASTER_URI=$MASTER_URI
+COPY run.sh .
+RUN chmod +x run.sh
 COPY youbot_jaco_gazebo /root/ros/ws/src/youbot_jaco_gazebo
-COPY youbot_jaco_sim.sh .
-RUN chmod +x youbot_jaco_sim.sh
 RUN . /opt/ros/indigo/setup.sh && cd /root/ros/ws && catkin build
-ENTRYPOINT ["./youbot_jaco_sim.sh"]
+ENTRYPOINT ["./run.sh"]

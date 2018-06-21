@@ -23,7 +23,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 ARG MASTER_URI
 ENV MASTER_URI=$MASTER_URI
-COPY youbot_sim.sh .
-RUN chmod +x youbot_sim.sh
+COPY run.sh .
+RUN chmod +x run.sh
 RUN . /opt/ros/indigo/setup.sh && cd /root/ros/ws && catkin build
-ENTRYPOINT ["./youbot_sim.sh"]
+ENTRYPOINT ["./run.sh"]
