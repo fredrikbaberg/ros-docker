@@ -5,8 +5,8 @@ RUN mkdir -p ~/ros/ws/src && cd ~/ros/ws/src && \
     git clone https://github.com/mas-group/youbot_description.git --single-branch --branch indigo-devel && \
     git clone https://github.com/Kinovarobotics/kinova-ros.git --single-branch --branch master && \
     mkdir -p ~/.gazebo && \
-    hg clone https://bitbucket.org/osrf/gazebo_models ~/.gazebo/models && \
-    rm -rf ~/.gazebo/models/.hg
+    git clone https://github.com/osrf/gazebo_models ~/.gazebo/models && \
+    rm -rf ~/.gazebo/models/.git
 # Could remove some files in ~/.gazebo/models to save space.
 RUN apt-get update && \
     cd ~/ros/ws && rosdep install --from-path src --ignore-src -ry && \
