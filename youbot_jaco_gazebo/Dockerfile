@@ -21,7 +21,8 @@ RUN apt-get update && \
     ros-indigo-joint-trajectory-controller \
     ros-indigo-ros-control \
     ros-indigo-ros-controllers \
-    ros-indigo-gazebo-plugins && \
+    ros-indigo-gazebo-plugins \
+    ros-indigo-gazebo-ros-pkgs && \
     rm -rf /var/lib/apt/lists/*
 ARG MASTER_URI
 ENV MASTER_URI=$MASTER_URI
@@ -29,5 +30,6 @@ COPY run.sh .
 RUN chmod +x run.sh
 COPY youbot_jaco_gazebo /root/ros/ws/src/youbot_jaco_gazebo
 RUN touch /root/ros/ws/src/kinova-ros/kinova_moveit/kinova_arm_moveit_demo/CATKIN_IGNORE
+RUN sed -i 's+hardware_interface/++g' /root/ros/ws/src/kinova-ros/kinova_description/urdf/kinova_common.xacro
 RUN . /opt/ros/indigo/setup.sh && cd /root/ros/ws && catkin build
 ENTRYPOINT ["./run.sh"]
