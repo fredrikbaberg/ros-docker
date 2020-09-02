@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<robot xmlns:xi="http://www.w3.org/2001/XInclude"
+       xmlns:gazebo="http://playerstage.sourceforge.net/gazebo/xmlschema/#gz"
+       xmlns:model="http://playerstage.sourceforge.net/gazebo/xmlschema/#model"
+       xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
+       xmlns:body="http://playerstage.sourceforge.net/gazebo/xmlschema/#body"
+	     xmlns:geom="http://playerstage.sourceforge.net/gazebo/xmlschema/#geom"
+	     xmlns:joint="http://playerstage.sourceforge.net/gazebo/xmlschema/#joint"
+       xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
+       xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
+       xmlns:rendering="http://playerstage.sourceforge.net/gazebo/xmlschema/#rendering"
+	     xmlns:renderable="http://playerstage.sourceforge.net/gazebo/xmlschema/#renderable"
+	     xmlns:physics="http://playerstage.sourceforge.net/gazebo/xmlschema/#physics"
+       xmlns:xacro="http://ros.org/wiki/xacro" name="youbot_j2s6s300">
+  
+  <!-- The following xacro:included files set up definitions of parts of the robot body -->
+  <xacro:include filename="$(find youbot_description)/urdf/common.xacro" />
+  <xacro:include filename="$(find youbot_description)/urdf/youbot_base/base.urdf.xacro" />
+  <xacro:include filename="$(find youbot_description)/urdf/youbot_plate/plate.urdf.xacro" /> 
+  <!-- <xacro:include filename="$(find youbot_description)/controller/ros_controller.urdf.xacro" /> -->
+  <xacro:include filename="$(find youbot_description)/urdf/materials.urdf.xacro" />
+  <xacro:include filename="$(find youbot_jaco_gazebo)/urdf/j2n6s300.xacro"/>
+  <!-- <xacro:include filename="$(find kinova_description)/urdf/j2n6s300.xacro"/> -->
+
+  <!-- Now we can start using the macros xacro:included above to define the actual youbot -->
+
+  <link name="robot"></link>
+  <joint name="robot_joint" type="fixed">
+    <parent link="robot"/>
+    <child link="base_footprint"/>
+  </joint>
+  <xacro:youbot_base name="base"/>
+  <xacro:youbot_plate name="plate" parent="base_link">
+    <origin xyz="-0.159 0 0.046" rpy="0 0 0" />
+  </xacro:youbot_plate>
+
+  <link name="arm_link_0" />
+  <joint name="arm_mount_joint" type="fixed">
+    <parent link="base_link" />
+    <child link = "arm_link_0" />
+    <origin xyz="0.143 0 0.02" rpy="0 0 0" />
+  </joint>
+  <xacro:j2n6s300  base_parent="arm_link_0"/>
+
+  <gazebo>
+    <plugin name="gazebo_ros_controller" filename="libgazebo_ros_control.so" />
+  </gazebo>
+
+</robot>
