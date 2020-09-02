@@ -2,9 +2,10 @@ version: '3'
 services:
   youbot_sim:
     tty: true
-    build: .
-    container_name: youbot_sim
-    image: youbot-gazebo
+    # build: .
+    # container_name: youbot_sim
+    # image: youbot-gazebo
+    image: fredrikbaberg/youbot-gazebo:dev
     network_mode: host
     # environment:
     #   - MASTER_URI='http://localhost:11311'
