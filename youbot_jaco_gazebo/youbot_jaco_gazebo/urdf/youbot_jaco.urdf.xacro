@@ -24,9 +24,9 @@
 
   <!-- Now we can start using the macros xacro:included above to define the actual youbot -->
 
-  <link name="dummy"></link>
-  <joint name="dummy_joint" type="fixed">
-    <parent link="dummy"/>
+  <link name="robot"></link>
+  <joint name="robot_joint" type="fixed">
+    <parent link="robot"/>
     <child link="base_footprint"/>
   </joint>
   <xacro:youbot_base name="base"/>
