@@ -23,11 +23,11 @@ services:
   #     - DISPLAY=172.20.16.1:0.0
   sim:
     tty: true
-    build: .
-    container_name: youbot_jaco_rossharp_sim
-    image: youbot-jaco-rossharp-sim
+    # build: .
+    # container_name: youbot_jaco_rossharp_sim
+    # image: youbot-jaco-rossharp-sim
+    image: fredrikbaberg/rossharp-youbot-gazebo
     network_mode: host
     # environment:
     #   - MASTER_URI=http://host.docker.internal:11311
     #   - DISPLAY=172.20.16.1:0.0
-      

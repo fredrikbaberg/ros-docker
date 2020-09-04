@@ -9,4 +9,4 @@ cd ~/ros/ws/
 source /root/ros/ws/devel/setup.bash
 catkin build
 source devel/setup.bash
-roslaunch youbot_jaco_gazebo sim.launch
+roslaunch sim sim.launch
