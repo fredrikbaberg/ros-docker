@@ -1,4 +1,7 @@
 FROM ros:indigo
+# Change ROS repository
+RUN echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros1-snapshots.list
+RUN apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
 # Checkout code from Github.
 RUN mkdir -p ~/ros/ws/src && cd ~/ros/ws/src && \
     # git clone https://github.com/mas-group/youbot_simulation.git --single-branch --branch indigo-devel && \
