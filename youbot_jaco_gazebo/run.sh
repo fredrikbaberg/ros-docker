@@ -4,9 +4,8 @@ if [ ! -z "${MASTER_URI}" ]; then
     echo "Exporting URI"
     export ROS_MASTER_URI=$MASTER_URI
 fi
+source /opt/ros/indigo/setup.bash
 cd ~/ros/ws/
-# source /opt/ros/indigo/setup.bash
-source /root/ros/ws/devel/setup.bash
 catkin build
-source devel/setup.bash
+source /root/ros/ws/devel/setup.bash
 roslaunch youbot_jaco_gazebo youbot_jaco.launch

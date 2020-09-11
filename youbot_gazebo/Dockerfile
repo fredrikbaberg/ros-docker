@@ -1,7 +1,8 @@
 FROM ros:indigo
 # Checkout code from Github.
 RUN mkdir -p ~/ros/ws/src && cd ~/ros/ws/src && \
-    git clone https://github.com/mas-group/youbot_simulation.git --single-branch --branch indigo-devel && \
+    # git clone https://github.com/mas-group/youbot_simulation.git --single-branch --branch indigo-devel && \
+    git clone https://github.com/fredrikbaberg/youbot_simulation.git --single-branch --branch dev && \
     git clone https://github.com/mas-group/youbot_description.git --single-branch --branch indigo-devel && \
     mkdir -p ~/.gazebo && \
     git clone https://github.com/osrf/gazebo_models --single-branch --branch master ~/.gazebo/models && \
@@ -26,5 +27,5 @@ ARG MASTER_URI
 ENV MASTER_URI=$MASTER_URI
 COPY run.sh .
 RUN chmod +x run.sh
-RUN . /opt/ros/indigo/setup.sh && cd /root/ros/ws && catkin build
+# RUN . /opt/ros/indigo/setup.sh && cd /root/ros/ws && catkin build
 ENTRYPOINT ["./run.sh"]

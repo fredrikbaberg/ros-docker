@@ -1,11 +1,13 @@
-version: '3'
+version: '3.8'
 services:
-  youbot_sim:
+  youbot_jaco_gazebo:
     tty: true
-    # build: .
-    # container_name: youbot_jaco_sim
-    # image: youbot-jaco-gazebo
-    image: fredrikbaberg/youbot-jaco-gazebo:dev
+    build:
+      context: .
+      args:
+        http_proxy:
+    container_name: youbot-jaco-gazebo
+    # image: fredrikbaberg/youbot-jaco-gazebo:dev
     network_mode: host
     # environment:
     #   - MASTER_URI='http://localhost:11311'
