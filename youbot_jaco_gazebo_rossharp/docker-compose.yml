@@ -1,0 +1,14 @@
+version: '3'
+services:
+  youbot_jaco_gazebo_rossharp:
+    tty: true
+    build:
+      context: .
+      args:
+        http_proxy:
+    container_name: youbot-jaco-gazebo-rossharp
+    # image: fredrikbaberg/rossharp-youbot-gazebo
+    network_mode: host
+    # environment:
+    #   - MASTER_URI=http://host.docker.internal:11311
+    #   - DISPLAY=host.docker.internal:0.0
