@@ -17,5 +17,5 @@ ARG MASTER_URI
 ENV MASTER_URI=$MASTER_URI
 COPY run.sh .
 RUN chmod +x run.sh
-# RUN . /opt/ros/kinetic/setup.sh && cd /root/ros/ws && catkin build
+RUN . /opt/ros/kinetic/setup.sh && cd /root/ros/ws && catkin build
 ENTRYPOINT ["./run.sh"]
