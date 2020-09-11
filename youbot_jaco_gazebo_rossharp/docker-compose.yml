@@ -7,7 +7,7 @@ services:
       args:
         http_proxy:
     container_name: youbot-jaco-gazebo-rossharp
-    # image: fredrikbaberg/rossharp-youbot-gazebo
+    image: fredrikbaberg/youbot-jaco-gazebo-rossharp:local
     network_mode: host
     # environment:
     #   - MASTER_URI=http://host.docker.internal:11311

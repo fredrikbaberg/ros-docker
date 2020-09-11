@@ -7,7 +7,7 @@ services:
       args:
         http_proxy:
     container_name: rossharp
-    # image: fredrikbaberg/rossharp:dev
+    image: fredrikbaberg/rossharp:local
     network_mode: host
     # environment:
     #   - MASTER_URI='http://localhost:11311'

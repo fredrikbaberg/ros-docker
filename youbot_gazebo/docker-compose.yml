@@ -7,7 +7,7 @@ services:
       args:
         http_proxy:
     container_name: youbot_gazebo
-    # image: fredrikbaberg/youbot-gazebo:dev
+    image: fredrikbaberg/youbot-gazebo:local
     network_mode: host
     # environment:
     #   - MASTER_URI='http://localhost:11311'
