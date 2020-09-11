@@ -8,4 +8,4 @@ source /opt/ros/indigo/setup.bash
 cd ~/ros/ws/
 catkin build
 source /root/ros/ws/devel/setup.bash
-roslaunch sim sim.launch
+roslaunch simulation sim.launch
