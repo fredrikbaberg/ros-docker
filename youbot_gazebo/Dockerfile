@@ -34,3 +34,12 @@ COPY run.sh .
 RUN chmod +x run.sh
 # RUN . /opt/ros/indigo/setup.sh && cd /root/ros/ws && catkin build
 ENTRYPOINT ["./run.sh"]
+
+# FROM osrf/ros_legacy:hydro-ros-precise
+# RUN apt update && apt install -y \
+#     ros-hydro-simulators \
+#     ros-hydro-youbot-simulation \
+#     ros-hydro-gazebo-ros-control \
+#     ros-hydro-ros-control \
+#     ros-hydro-ros-controllers && \
+#     rm -rf /var/lib/apt/lists/*
