@@ -1,5 +1,6 @@
 FROM ros:kinetic-ros-core
-RUN apt-get update && \
+RUN export DEBIAN_FRONTEND=noninteractive && \
+    apt-get update && \
     apt install -y \
     git \
     python-catkin-tools \

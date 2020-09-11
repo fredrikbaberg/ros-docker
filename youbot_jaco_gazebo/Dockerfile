@@ -12,7 +12,8 @@ RUN mkdir -p ~/ros/ws/src && cd ~/ros/ws/src && \
     git clone https://github.com/osrf/gazebo_models --single-branch --branch master ~/.gazebo/models && \
     rm -rf ~/.gazebo/models/.git
 # Could remove some files in ~/.gazebo/models to save space.
-RUN apt-get update && \
+RUN export DEBIAN_FRONTEND=noninteractive && \
+    apt-get update && \
     rosdep update --include-eol-distros && \
     cd ~/ros/ws && rosdep install --from-path src --ignore-src -ry && \
     apt-get install -y \
