@@ -1,0 +1,4 @@
+<launch>
+  <include file="$(find youbot_jaco_gazebo)/launch/youbot_jaco.launch" />
+  <include file="$(find file_server)/launch/ros_sharp_communication.launch" />
+</launch>
