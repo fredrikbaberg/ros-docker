@@ -36,6 +36,7 @@ COPY run.sh .
 RUN chmod +x run.sh
 RUN . /opt/ros/indigo/setup.sh && cd /root/ros/ws && catkin build
 ENTRYPOINT ["./run.sh"]
+CMD [ "roslaunch", "youbot_gazebo_robot", "youbot.launch", "world:=empty_world", "headless:=true" ]
 
 # FROM osrf/ros_legacy:hydro-ros-precise
 # RUN apt update && apt install -y \

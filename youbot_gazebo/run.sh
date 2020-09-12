@@ -8,4 +8,4 @@ fi
 # cd ~/ros/ws/
 # catkin build
 source /root/ros/ws/devel/setup.bash
-roslaunch youbot_gazebo_robot youbot.launch world:=empty_world headless:=true
+$@

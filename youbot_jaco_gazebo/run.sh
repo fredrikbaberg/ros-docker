@@ -8,4 +8,4 @@ fi
 # cd ~/ros/ws/
 # catkin build
 source /root/ros/ws/devel/setup.bash
-roslaunch youbot_jaco_gazebo youbot_jaco.launch
+$@

@@ -8,4 +8,4 @@ fi
 # cd ~/ros/ws/
 # catkin build
 source /root/ros/ws/devel/setup.bash
-roslaunch file_server ros_sharp_communication.launch
+$@

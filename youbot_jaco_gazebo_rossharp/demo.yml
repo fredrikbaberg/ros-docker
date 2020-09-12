@@ -1,0 +1,35 @@
+version: '3.8'
+services:
+  roscore:
+    container_name: roscore
+    image: fredrikbaberg/youbot-jaco-gazebo-rossharp:dev
+    network_mode: host
+    command: ["roscore"]
+  # youbot_gazebo:
+  #   tty: true
+  #   container_name: youbot_gazebo
+  #   image: fredrikbaberg/youbot-jaco-gazebo-rossharp:dev
+  #   network_mode: host
+  #   command: ["roslaunch", "--wait", "youbot_gazebo_robot", "youbot.launch", "world:=empty_world", "headless:=true"]
+  youbot_jaco_gazebo:
+    container_name: youbot_jaco_gazebo
+    image: fredrikbaberg/youbot-jaco-gazebo-rossharp:dev
+    network_mode: host
+    command: ["roslaunch", "--wait", "youbot_jaco_gazebo", "youbot_jaco.launch"]
+  rossharp:
+    container_name: rossharp
+    image: fredrikbaberg/youbot-jaco-gazebo-rossharp:dev
+    network_mode: host
+    command: ["roslaunch", "--wait", "file_server", "ros_sharp_communication.launch"]
+  rviz:
+    container_name: rviz
+    image: fredrikbaberg/youbot-jaco-gazebo-rossharp:dev
+    network_mode: host
+    environment:
+      - DISPLAY=host.docker.internal:0.0
+    command: ["rosrun", "rviz", "rviz"]
+  jaco_home:
+    container_name: jaco_home
+    image: fredrikbaberg/youbot-jaco-gazebo-rossharp:dev
+    network_mode: host
+    command: ["rosrun", "kinova_control", "move_robot.py", "j2n6s300"]

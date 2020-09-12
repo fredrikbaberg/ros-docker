@@ -9,6 +9,6 @@ services:
     container_name: youbot-jaco-gazebo-rossharp
     image: fredrikbaberg/youbot-jaco-gazebo-rossharp:local
     network_mode: host
-    # environment:
-    #   - MASTER_URI=http://host.docker.internal:11311
-    #   - DISPLAY=host.docker.internal:0.0
+    environment:
+      - MASTER_URI
+      - DISPLAY

@@ -19,3 +19,4 @@ COPY run.sh .
 RUN chmod +x run.sh
 RUN . /opt/ros/kinetic/setup.sh && cd /root/ros/ws && catkin build
 ENTRYPOINT ["./run.sh"]
+CMD [ "roslaunch", "file_server", "ros_sharp_communication.launch" ]
