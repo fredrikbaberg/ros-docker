@@ -32,8 +32,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     ros-indigo-gazebo-ros-pkgs \
     ros-indigo-rosbridge-server && \
     rm -rf /var/lib/apt/lists/*
-ARG MASTER_URI
-ENV MASTER_URI=$MASTER_URI
 COPY run.sh .
 RUN chmod +x run.sh
 COPY youbot_jaco_gazebo /root/ros/ws/src/youbot_jaco_gazebo

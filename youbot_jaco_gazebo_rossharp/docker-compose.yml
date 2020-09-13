@@ -1,6 +1,6 @@
 version: '3'
 services:
-  youbot_jaco_gazebo_rossharp:
+  youbot-jaco-gazebo-rossharp:
     tty: true
     build:
       context: .
@@ -10,5 +10,5 @@ services:
     image: fredrikbaberg/youbot-jaco-gazebo-rossharp:local
     network_mode: host
     environment:
-      - MASTER_URI
-      - DISPLAY
+      - ROS_MASTER_URI
+      # - DISPLAY

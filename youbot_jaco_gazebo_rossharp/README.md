@@ -13,5 +13,5 @@ Docker and docker-compose are required, see [Docker webpage](https://www.docker.
 
 To launch, just type `docker-compose up`.
 
-Alternatively: `docker run --rm -it --network=host -e MASTER_URI=http://localhost:11311 fredrikbaberg/youbot-jaco-gazebo`
-This will pull and run the image, with the ROS_MASTER_URI specified as MASTER_URI. Example uses localhost, if there is not one running it will start one as part of the launchfile.
+Alternatively: `docker run --rm -it --network=host -e ROS_MASTER_URI=http://localhost:11311 fredrikbaberg/youbot-jaco-gazebo-rossharp`
+This will pull and run the image, with ROS_MASTER_URI (optional). Example uses localhost, if there is not a roscore running it will start one as part of the launchfile.

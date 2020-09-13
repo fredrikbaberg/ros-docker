@@ -10,4 +10,4 @@ services:
     image: fredrikbaberg/rossharp:local
     network_mode: host
     environment:
-      - MASTER_URI
+      - ROS_MASTER_URI

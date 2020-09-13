@@ -1,14 +1,14 @@
 version: '3.8'
 services:
-  youbot_gazebo:
+  youbot-gazebo:
     tty: true
     build:
       context: .
       args:
         http_proxy:
-    container_name: youbot_gazebo
+    container_name: youbot-gazebo
     image: fredrikbaberg/youbot-gazebo:local
     network_mode: host
     environment:
-      - MASTER_URI
-      - DISPLAY
+      - ROS_MASTER_URI
+      # - DISPLAY

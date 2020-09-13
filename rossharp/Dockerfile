@@ -13,8 +13,6 @@ RUN mkdir -p ~/ros/ws/src && \
     git clone https://github.com/siemens/ros-sharp.git /tmp/ros-sharp && \
     mv /tmp/ros-sharp/ROS/ $HOME/ros/ws/src/ROSSHARP && \
     rm -rf /tmp/*
-ARG MASTER_URI
-ENV MASTER_URI=$MASTER_URI
 COPY run.sh .
 RUN chmod +x run.sh
 RUN . /opt/ros/kinetic/setup.sh && cd /root/ros/ws && catkin build

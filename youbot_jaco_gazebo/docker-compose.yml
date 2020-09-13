@@ -1,6 +1,6 @@
 version: '3.8'
 services:
-  youbot_jaco_gazebo:
+  youbot-jaco-gazebo:
     tty: true
     build:
       context: .
@@ -9,5 +9,6 @@ services:
     container_name: youbot-jaco-gazebo
     image: fredrikbaberg/youbot-jaco-gazebo:local
     network_mode: host
-    # environment:
-    #   - MASTER_URI='http://localhost:11311'
+    environment:
+      - ROS_MASTER_URI
+      # - DISPLAY

@@ -30,8 +30,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     ros-indigo-ros-controllers \
     ros-indigo-gazebo-plugins && \
     rm -rf /var/lib/apt/lists/*
-ARG MASTER_URI
-ENV MASTER_URI=$MASTER_URI
 COPY run.sh .
 RUN chmod +x run.sh
 RUN . /opt/ros/indigo/setup.sh && cd /root/ros/ws && catkin build
